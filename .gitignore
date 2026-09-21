@@ -1,3 +1,4 @@
 /target
 accounts.jsonl
 proxies.txt
+.env
