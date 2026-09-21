@@ -1,0 +1,32 @@
+[package]
+name = "fubo-account-generator"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.98"
+
+[lib]
+name = "fubo_account_generator"
+path = "src/lib.rs"
+
+[[bin]]
+name = "fubo-gen"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4", features = ["derive"] }
+dotenvy = "0.15"
+rand = "0.9"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+url = "2"
+wreq = { git = "https://github.com/0x676e67/wreq", branch = "main", default-features = false, features = ["tokio-rt", "chromium-roots", "json", "gzip", "brotli", "zstd", "deflate", "charset"] }
+wreq-util = { git = "https://github.com/0x676e67/wreq-util", branch = "main", features = ["emulation", "emulation-chromium-pki"] }
+
+[patch.crates-io]
+wreq = { git = "https://github.com/0x676e67/wreq", branch = "main" }
+btls = { git = "https://github.com/0x676e67/btls", rev = "129887582a538b8f4dcf371d15c953335312ca37" }
+btls-sys = { git = "https://github.com/0x676e67/btls", rev = "129887582a538b8f4dcf371d15c953335312ca37" }
+tokio-btls = { git = "https://github.com/0x676e67/btls", rev = "129887582a538b8f4dcf371d15c953335312ca37" }
